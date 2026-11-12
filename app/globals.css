@@ -1,26 +1,64 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+/* the few building blocks every screen uses, so pages stay short and look the same */
+@utility card { @apply rounded-2xl border border-slate-200/80 bg-white p-4 shadow-sm sm:p-5; }
+@utility btn-primary {
+  @apply inline-flex min-h-12 items-center justify-center gap-2 rounded-xl bg-emerald-700 px-5 font-semibold text-white
+    transition hover:bg-emerald-800 disabled:opacity-40;
 }
+@utility btn-secondary {
+  @apply inline-flex min-h-12 items-center justify-center gap-2 rounded-xl border border-slate-300 bg-white px-5 font-semibold
+    text-slate-700 transition hover:bg-slate-50 disabled:opacity-40;
+}
+@utility option {
+  @apply block min-h-14 w-full rounded-xl border-2 border-slate-200 bg-white p-3 text-left transition
+    hover:border-emerald-600 hover:bg-emerald-50/50 aria-pressed:border-emerald-700 aria-pressed:bg-emerald-50;
+}
+@utility input {
+  @apply mt-1 w-full rounded-xl border border-slate-300 bg-white px-3 py-3 outline-none transition
+    focus:border-emerald-600 focus:ring-4 focus:ring-emerald-600/15;
+}
+@utility label { @apply block text-sm font-medium text-slate-700; }
+@utility section-title { @apply mb-3 text-lg font-semibold tracking-tight; }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+/* Basellion the monster (components/Monster.tsx) */
+.monster-body { transform-box: view-box; transform-origin: 100px 184px; }
+.monster-happy .monster-body { animation: hop 1.6s ease-in-out infinite; }
+.monster-eating .monster-body { animation: hop 0.5s ease-in-out infinite; }
+.monster-hungry .monster-body { animation: wobble 2.4s ease-in-out infinite; }
+.monster-sad .monster-body { animation: droop 4s ease-in-out infinite; }
+.monster-thinking .monster-body { animation: tilt 1.2s ease-in-out infinite alternate; }
+.monster-spitting .monster-body { animation: recoil 0.6s ease-out; }
+.monster-chomp { transform-box: fill-box; transform-origin: center; animation: chomp 0.35s ease-in-out infinite; }
+.monster-sprout { transform-box: fill-box; transform-origin: bottom; animation: sway 3s ease-in-out infinite; }
+.monster-tear { animation: tear 2.5s ease-in infinite; }
+/* the photo flies up into Basellion's mouth, or gets spat out to the side */
+.item-in { animation: item-in 1.1s ease-in forwards; }
+.item-out { animation: item-out 1s ease-out forwards; }
+.coin-pop { animation: coin-pop 0.6s ease-out; }
+
+@keyframes hop { 0%, 100% { transform: translateY(0) scale(1, 1); } 50% { transform: translateY(-10px) scale(0.97, 1.03); } }
+@keyframes wobble { 0%, 100% { transform: rotate(0); } 25% { transform: rotate(-3deg); } 75% { transform: rotate(3deg); } }
+@keyframes droop { 0%, 100% { transform: scale(1, 1); } 50% { transform: scale(1.03, 0.95); } }
+@keyframes tilt { from { transform: rotate(-4deg); } to { transform: rotate(4deg); } }
+@keyframes recoil { 30% { transform: scale(1.08, 0.9); } }
+@keyframes chomp { 50% { transform: scaleY(0.25); } }
+@keyframes sway { 0%, 100% { transform: rotate(-6deg); } 50% { transform: rotate(6deg); } }
+@keyframes tear { 0% { transform: translateY(0); opacity: 0; } 20% { opacity: 1; } 100% { transform: translateY(26px); opacity: 0; } }
+@keyframes item-in {
+  from { transform: translate(-50%, 140px) scale(1.4) rotate(-20deg); opacity: 1; }
+  to { transform: translate(-50%, -50%) scale(0.1) rotate(10deg); opacity: 0; }
+}
+@keyframes item-out {
+  from { transform: translate(-50%, -50%) scale(0.2); opacity: 1; }
+  to { transform: translate(120px, 20px) scale(1.1) rotate(380deg); opacity: 0; }
+}
+@keyframes coin-pop { 0% { transform: scale(0.6); opacity: 0; } 60% { transform: scale(1.1); opacity: 1; } 100% { transform: scale(1); } }
+
+@media (prefers-reduced-motion: reduce) {
+  .monster *, .item-in, .item-out, .coin-pop { animation: none !important; }
 }
