@@ -1,8 +1,8 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  /* config options here */
   cacheComponents: true,
+  devIndicators: false, // the floating "N" badge covers the phone tab bar during demos
   partialPrefetching: true,
   turbopack: {
     rules: {

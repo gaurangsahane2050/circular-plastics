@@ -6,20 +6,37 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "test": "node --env-file=.env.local --test tests/*.test.mjs",
+    "train": "node ml/train.mjs",
+    "reset-db": "supabase db reset",
+    "data": "node ml/download.mjs"
   },
   "dependencies": {
+    "@supabase/supabase-js": "^2.119.0",
+    "@tensorflow-models/coco-ssd": "^2.2.3",
+    "@tensorflow/tfjs": "^4.22.0",
+    "leaflet": "^1.9.4",
+    "lucide-react": "^1.72.0",
     "next": "16.4.6",
+    "qrcode.react": "^4.2.0",
     "react": "19.3.0",
-    "react-dom": "19.3.0"
+    "react-dom": "19.3.0",
+    "react-leaflet": "^5.0.0",
+    "recharts": "^3.10.1"
   },
   "devDependencies": {
     "@tailwindcss/turbopack": "4.3.3",
+    "@tensorflow/tfjs-backend-wasm": "^4.22.0",
+    "@types/leaflet": "^1.9.22",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "eslint": "^9",
     "eslint-config-next": "16.4.6",
+    "hyparquet": "^1.33.0",
+    "sharp": "^0.35.5",
+    "supabase": "^3.1.0",
     "tailwindcss": "4.3.3",
     "typescript": "^5"
   }
