@@ -2,6 +2,8 @@
 
 LYB Mumbai Hackathon 2026, Problem Statement 1.
 
+**Live:** https://circular-plastics.vercel.app (the database is being moved to Supabase cloud; until then sign-in only works when running locally)
+
 A mobile-first web app that connects households, societies, campuses and small businesses with collectors and recyclers. Users "feed" Basellion, a recycling monster: they photograph the item, the AI reads the plastic type, and Basellion eats recyclable plastic or spits out what can't be recycled. The user then books a nearby collector (within 5 km) for a time slot the collector confirms, follows the pickup like a parcel (requested → confirmed → on the way → picked up), and earns coins. A QR label carries the chain of custody all the way to the recycler.
 
 In the database the user role is called `generator`, as in the problem statement. On screen it is just "User".
@@ -21,6 +23,7 @@ All data is fictional. Plant X, every society, collector, recycler, area and add
 | Bonus: QR label per batch | QR on every batch → public history page with no names |
 
 Extras:
+- Every screen in English, हिंदी and मराठी, switched from the header (EN · हिं · मरा) and remembered on the device. Dates and pickup slots read naturally in each language ("सुबह 9–11 बजे", "सकाळी 9–11"), Basellion's chat answers in the chosen language, and name hints understand words like थैली, पिशवी, बोतल, डबा. The translations are ours; a native speaker should review them.
 - Sign-up for new users (name, phone, age, gender, first address) and a Profile page to edit details and keep several pickup addresses. You choose the address for each pickup, and the 5 km collector search starts from it.
 - 1 to 3 photos per listing, from the in-app camera or the device. Items are found automatically, boxed and numbered 1, 2, 3 from left to right, and each one is classified on its own crop:
   1. items laid out on a plain floor or sheet are found by comparing them with the background (`lib/objects.ts`);
