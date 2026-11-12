@@ -1,0 +1,8 @@
+# never upload these to Vercel
+.env*
+!.env.example
+ml/data
+ml/raw
+supabase/.temp
+supabase/.branches
+tests
