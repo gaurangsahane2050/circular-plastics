@@ -1,0 +1,11 @@
+{
+  "labels": [
+    "PET",
+    "HDPE",
+    "PP",
+    "LDPE",
+    "UNCLEAR"
+  ],
+  "imageSize": 224,
+  "testAccuracy": 0.824
+}
