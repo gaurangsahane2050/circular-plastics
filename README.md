@@ -2,7 +2,7 @@
 
 LYB Mumbai Hackathon 2026, Problem Statement 1.
 
-**Live:** https://circular-plastics.vercel.app (the database is being moved to Supabase cloud; until then sign-in only works when running locally)
+**Live:** https://circular-plastics.vercel.app (Vercel + Supabase cloud in Mumbai; demo logins on the sign-in page, password `demo1234`)
 
 A mobile-first web app that connects households, societies, campuses and small businesses with collectors and recyclers. Users "feed" Basellion, a recycling monster: they photograph the item, the AI reads the plastic type, and Basellion eats recyclable plastic or spits out what can't be recycled. The user then books a nearby collector (within 5 km) for a time slot the collector confirms, follows the pickup like a parcel (requested → confirmed → on the way → picked up), and earns coins. A QR label carries the chain of custody all the way to the recycler.
 
